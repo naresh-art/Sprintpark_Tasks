@@ -1,0 +1,90 @@
+<template>
+    <div class="slds-grid slds-wrap slds-align_absolute-center container">
+        <!-- Thank-You Screen -->
+        <template if:true={showThankYouScreen}>
+            <div class="thank-you-screen">
+                <h2 class="slds-text-heading_large">Thank you!</h2>
+                <p class="slds-text-body_medium">Your account has been created successfully. We will get back to you soon.</p>
+                <div class="image-container">
+                    <img src={thankYouImage} alt="Thank You" />
+                </div>
+            </div>
+        </template>
+
+        <!-- Account Creation Form -->
+        <template if:false={showThankYouScreen}>
+            <lightning-card class="form-card">
+                <h2 class="slds-text-heading_medium"><b>Create Account</b></h2>
+                <div slot="footer">
+                    <lightning-button label="Submit" onclick={handleSaveAccount} variant="brand"></lightning-button>
+                </div>
+
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small"><b>Account Details</b></h2>
+                    <div class="Accountdetails">
+                        <div class="slds-grid slds-wrap slds-gutters">
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-input class="slds-input_small" type="text" label="Account Name" value={accountName} onchange={handleNameChange} required></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-input class="slds-input_small" type="tel" label="Phone" value={accountPhone} onchange={handlePhoneChange} required></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-combobox label="Account Type" value={Type} options={accountTypes} onchange={handleTypeChange} required></lightning-combobox>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-combobox label="Prospect Rating" value={Rating} options={accountRating} onchange={handleRatingChange} required></lightning-combobox>
+                                </div>
+                            </div>
+                            <template if:true={isOtherSelected}>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <lightning-textarea class="slds-input_small" label="Please specify account type" value={typeDescription} onchange={handleDescriptionChange} required></lightning-textarea>
+                                </div>
+                            </template>
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-input class="slds-input_small" type="date" label="DOB" value={accountDOB} onchange={handleDOBChange} required></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-input class="slds-input_small" type="email" label="Email" value={accountEmail} onchange={handleEmailChange} required></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-p-around_medium">
+                    <h2 class="slds-text-heading_small"><b>Other Information</b></h2>
+                    <div class="Otherdetails">
+                        <div class="slds-grid slds-wrap slds-gutters">
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-combobox label="Customer Priority" value={accountCustomerPriority} options={accountCustomerPriorityOptions} onchange={handleCustomerPriorityChange} required></lightning-combobox>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-combobox label="SLA" value={accountSLA} options={accountSLAOptions} onchange={handleSLAChange} required></lightning-combobox>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                <div style="width: 300px;">
+                                    <lightning-input class="slds-input_small" type="date" label="SLA Expiration Date" value={accountSLAExpirationDate} onchange={handleSLAExpirationDateChange} required></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </lightning-card>
+        </template>
+    </div>
+</template>

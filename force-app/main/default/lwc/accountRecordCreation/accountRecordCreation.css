@@ -1,0 +1,81 @@
+.Accountdetails {
+    background-color:white;
+}
+
+.Otherdetails{
+    background-color:white;
+}
+/* rgb(233, 233, 250); */
+ /* rgb(233, 233, 250); */
+
+ .form-card {
+    width: 80%;
+    max-width: 700px;
+    min-width: 300px;
+    height:  80%;
+    max-height: 800px;    
+    padding: 3rem;
+    max-height: 1000px;
+    padding-inline: 20px;
+
+    border: 1px solid #f7f6f3; 
+    border-radius: 8px;       
+    padding: 15px;  
+    border-width:4px; 
+    background-color: #92abcc;
+   
+}
+/* .container {
+    background-color: white;
+} */
+.slds-text-heading_small{
+    -webkit-text-fill-color: #a0abf2;
+    background-color: #eaf0f7;
+}
+.slds-text-heading_medium{
+    text-align: center;
+    -webkit-text-fill-color: #8f9dfb;
+}
+.thank-you-screen {
+    width: 80%;
+    max-width: 700px;
+    min-width: 300px;
+    height:  80%;
+    max-height: 800px;    
+    padding: 3rem;
+    max-height: 1000px;
+    padding-inline: 20px;
+    text-align: center;
+    margin: 2rem;
+    padding: 2rem;
+    background-color: #92abcc;
+    border-radius: 8px;
+    border: 2px solid  #f7f6f3;
+}
+
+.thank-you-screen h2 {
+    color: #1a73e8;
+    margin-bottom: 1rem;
+}
+
+.thank-you-screen p {
+    color: #5f6368;
+    font-size: 1.2rem;
+}
+
+.image-container img {
+    width: 30%;
+    height: 30%;
+    margin-top: 1.5rem;
+}
+/* 
+.form-card {
+    width: 80%;
+    max-width: 700px;
+    min-width: 300px;
+    padding: 2rem;
+   
+} */
+ .container{
+    background-color: white;
+ }

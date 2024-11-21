@@ -1,0 +1,119 @@
+<template>
+    <div class="slds-grid slds-wrap slds-align_absolute-center container">
+        <lightning-card class="form-card" >
+            <!-- Step 1: Account Information -->
+            <template if:true={firstScreen}>
+                <div class="slds-card__header">
+                    <h2 class="slds-text-heading_medium slds-p-vertical_medium slds-text-align_center">
+                        Account Information
+                    </h2>
+                </div>
+                <div class="slds-card-body slds-grid slds-wrap slds-gutters_none">
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-input class="small-input" type="text" label="Account Name" value={accountName} onchange={handleAccountNameChange} required></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-combobox class="small-input" name="Rating" label="Rating" value={Rating} options={ratingOptions} onchange={handleRatingChange} placeholder="Select Rating"></lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-combobox class="small-input" name="Type" label="Type" value={Type} options={typeOptions} onchange={handleTypeChange} placeholder="Select Type"></lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-input class="small-input" type="phone" label="Phone" value={accountPhone} onchange={handleAccountPhoneChange}></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-card__footer slds-text-align_center">
+                    <lightning-button variant="brand" label="Next" onclick={handleFirstScreenNext}></lightning-button>
+                </div>
+            </template>
+
+            <!-- Step 2: Contact Information -->
+            <template if:true={secondScreen}>
+                <div class="slds-card__header">
+                    <h2 class="slds-text-heading_medium slds-p-vertical_medium slds-text-align_center">
+                        Contact Information
+                    </h2>
+                </div>
+                <div class="slds-card-body slds-grid slds-wrap slds-gutters_none">
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-input class="small-input" type="text" label="First Name" value={firstName} onchange={handleContactFirstNameChange} required></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-input class="small-input" type="text" label="Last Name" value={lastName} onchange={handleContactLastNameChange} required></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-input class="small-input" type="phone" label="Phone" value={contactPhone} onchange={handleContactPhoneChange}></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2" style="padding-left: 20px; max-width: 45%;">
+                        <lightning-input class="small-input" type="email" label="Email" value={contactEmail} onchange={handleContactEmailChange}></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-card__footer slds-text-align_center">
+                    <lightning-button variant="neutral" label="Previous" onclick={handleSecondScreenPrevious}></lightning-button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <lightning-button variant="brand" label="Next" onclick={handleSecondScreenNext}></lightning-button>
+                </div>
+            </template>
+
+                        <!-- Step 3: Preview Information -->
+                        <template if:true={thirdScreen}>
+                            <div class="slds-card__header">
+                                <h2 class="slds-text-heading_medium slds-p-vertical_medium slds-text-align_center">
+                                    Preview Information
+                                </h2>
+                            </div>
+                            <div class="slds-card-body preview-container">
+                                <!-- Account Information Section -->
+                                <div class="account-box preview-box">
+                                    <h3 class="slds-text-heading_small slds-m-bottom_small">Account Information</h3>
+                                    <div class="slds-grid slds-wrap slds-gutters">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <p><strong>Account Name:</strong> {accountName}</p>
+                                            <p><strong>Rating:</strong> {Rating}</p>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <p><strong>Phone:</strong> {accountPhone}</p>
+                                            <p><strong>Type:</strong> {Type}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        
+                                <!-- Contact Information Section -->
+                                <div class="contact-box preview-box">
+                                    <h3 class="slds-text-heading_small slds-m-bottom_small">Contact Information</h3>
+                                    <div class="slds-grid slds-wrap slds-gutters">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <p><strong>First Name:</strong> {firstName}</p>
+                                            <p><strong>Phone:</strong> {contactPhone}</p>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <p><strong>Last Name:</strong> {lastName}</p>
+                                            <p><strong>Email:</strong> {contactEmail}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-card__footer slds-text-align_center">
+                                <lightning-button variant="neutral" label="Previous" onclick={handleThirdScreenPrevious}></lightning-button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <lightning-button variant="brand" label="Submit" onclick={handleFinalSubmit}></lightning-button>
+                            </div>
+                        </template>
+
+                        <template if:true={fourthscreen}>
+                            <div class="slds-card__header">
+                                <h2 class="slds-text-heading_large  slds-p-vertical_medium slds-text-align_center">
+                                    Thank You!. Your form has been submitted and our team will contact you soon.
+                                </h2>
+                            </div>
+                            <div class="slds-card-body slds-text-align_center">
+                                <!-- <p>Our team will reach out to you soon!</p> -->
+                                <img src={thankyou} alt="Thank You" class="thank-you-image" />
+                            </div>
+                        </template>
+
+
+
+        </lightning-card>
+    </div>
+</template>
